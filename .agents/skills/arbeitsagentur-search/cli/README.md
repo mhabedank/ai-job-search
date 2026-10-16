@@ -50,6 +50,7 @@ bun run src/cli.ts detail 10000-1204046695-S --format plain
 
 ```bash
 bun run test        # unit tests + a small live smoke test against the API
+bun test            # offline only (what CI runs) — live smoke tests are skipped
 bun run typecheck
 ```
 

@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "bun run src/cli.ts",
-    "test": "bun test --timeout 30000",
+    "test": "ARBEITSAGENTUR_LIVE=1 bun test --timeout 30000",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {},

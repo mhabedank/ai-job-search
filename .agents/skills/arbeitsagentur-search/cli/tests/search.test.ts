@@ -6,7 +6,10 @@ interface SearchOut {
   results: { id: string; title: string; company: string | null; location: string | null; date: string | null; url: string }[]
 }
 
-describe("live search (smoke)", () => {
+// Live tests hit the real API; `bun run test` enables them, plain `bun test` (CI) skips them.
+const live = !!process.env.ARBEITSAGENTUR_LIVE
+
+describe.skipIf(!live)("live search (smoke)", () => {
   test("search around Lutherstadt Wittenberg returns results with id/title/url", async () => {
     const out = parseJSON<SearchOut>(
       await runCLI(["search", "-q", "Ingenieur", "-l", "Lutherstadt Wittenberg", "-r", "50", "--limit", "5"]),
